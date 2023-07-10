@@ -5,7 +5,11 @@ export default function Home() {
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto
     ">
       <Header>
-        Hi
+        <div className="mb-2">
+          <h1> 
+            Welcome!
+          </h1>
+        </div> 
       </Header>
     </div>
   )
