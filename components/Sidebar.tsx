@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import {HiHome} from "react-icons/hi"
 import {BiSearch} from "react-icons/bi"
 import Box from "./Box";
+import Sidebaritem from "./Sidebaritem";
 
 interface SidebarProps{
     children: React.ReactNode;
@@ -40,7 +41,7 @@ const Sidebar: React.FC<SidebarProps>= ({
         md:flex
         flex-col
         gap-y-2
-        bg-black 
+        bg-black
         h-full
         w-[300px]
         p-2
@@ -51,7 +52,7 @@ const Sidebar: React.FC<SidebarProps>= ({
                 className="flex flex-col gap-y-4 px-5 py-4"
                 > 
                     {routes.map((item) => (
-                        <SidebarItem 
+                        <Sidebaritem 
                             key = {item.label}
                             {...item}
                         />
@@ -59,9 +60,12 @@ const Sidebar: React.FC<SidebarProps>= ({
                 </div>
             </Box>
             <Box className="overflow-y-auto h-full"> 
-                Song Library
+                <Library />
             </Box>
         </div>
+        <main className="h-full flex-1 overflow-auto py-2">
+            {children}
+        </main>
     </div>
   )
 }
