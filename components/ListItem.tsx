@@ -43,7 +43,7 @@ const ListItem: React.FC<ListItemProps> = ({
       <div className="
         relative 
         min-h-[64px] 
-        min-w-[64px]
+        min-w-[55px]
         ">
         <Image
           className="object-cover"
