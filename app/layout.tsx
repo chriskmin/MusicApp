@@ -7,7 +7,7 @@ const font = Figtree({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Music App',
-  description: 'Spice up your eardrums',
+  description: 'Spicing up sound',
 }
 
 export default function RootLayout({
