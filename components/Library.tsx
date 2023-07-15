@@ -1,8 +1,10 @@
 "use client";
 import {LuLibrary} from 'react-icons/lu'
 import {AiOutlinePlus} from 'react-icons/ai'
+import useAuthModal from '@/hooks/useAuthModal';
 
 const Library = () => {
+    const authModal = useAuthModal();
     const onClick = () =>{
         //Upload
     };
