@@ -1,9 +1,12 @@
+import songfetcher from "@/actions/songfetcher";
 import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
+import SongViewability from "./components/SongViewability";
 
 export const revalidate = 0;
 
-export default function Home() {
+export default async function Home() {
+  const songs = await songfetcher();
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto
     ">
@@ -52,9 +55,7 @@ export default function Home() {
             Newest Songs
           </h1>
         </div>
-        <div>
-          List of Songs
-        </div>
+        <SongViewability songs={songs}/>
       </div>
     </div>
   )
