@@ -1,16 +1,17 @@
 "use client"
 
+import SongItem from "@/components/SongItem";
 import { Song } from "@/types";
 
 interface SongViewabilitytProps {
     songs: Song[];
   }
-  
-
 
 const SongViewability: React.FC<SongViewabilitytProps>= ({
     songs
 }) => {
+    
+
     if (songs.length === 0){
         return(
         <div className="mt-4 text-neutral-400">
@@ -33,7 +34,7 @@ const SongViewability: React.FC<SongViewabilitytProps>= ({
       ">
         {songs.map((item) => (
         <SongItem 
-          onClick={(id: string) => onPlay(id)} 
+          onClick = {() => {}}
           key={item.id} 
           data={item}
         />
