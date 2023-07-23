@@ -1,6 +1,7 @@
 "use client"
 
 import SongItem from "@/components/SongItem";
+import usePlay from "@/hooks/usePlay";
 import { Song } from "@/types";
 
 interface SongViewabilitytProps {
@@ -10,8 +11,8 @@ interface SongViewabilitytProps {
 const SongViewability: React.FC<SongViewabilitytProps>= ({
     songs
 }) => {
+    const onPlay = usePlay(songs);
     
-
     if (songs.length === 0){
         return(
         <div className="mt-4 text-neutral-400">
@@ -34,7 +35,7 @@ const SongViewability: React.FC<SongViewabilitytProps>= ({
       ">
         {songs.map((item) => (
         <SongItem 
-          onClick = {() => {}}
+          onClick = {(id: string) => onPlay(id)}
           key={item.id} 
           data={item}
         />
