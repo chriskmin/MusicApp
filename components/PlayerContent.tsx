@@ -4,7 +4,9 @@ import { Song } from "@/types";
 import MediaItem from "./MediaItem";
 import LikeButton from "./LikeButton";
 import {BsPauseFill, BsPlayFill} from "react-icons/bs"
-import { AiFillBackward } from "react-icons/ai";
+import { AiFillBackward, AiFillSmile, AiFillStepForward } from "react-icons/ai";
+import {HiSpeakerXMark, HiSpeakerWave} from "react-icons/hi2"
+import { Slider } from "@radix-ui/react-slider";
 
 
 
@@ -20,6 +22,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
 }) => {
 
   const Icon = true ? BsPauseFill: BsPlayFill;
+  const VolumeIcon = true ? HiSpeakerXMark : HiSpeakerWave;
   
   return(
 
@@ -65,9 +68,60 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             max-w-[722px] 
             gap-x-6
         ">
-            <AiFillBackward /> 
-
-
+            <AiFillBackward 
+                onClick={() => {}}
+                size={30} 
+                className="
+                text-neutral-400 
+                cursor-pointer 
+                hover:text-white 
+                transition"
+            /> 
+            <div onClick={() => {}}
+                className="
+                flex 
+                items-center 
+                justify-center
+                h-10
+                w-10 
+                rounded-full 
+                bg-white 
+                p-1 
+                cursor-pointer
+                "
+            >
+                <Icon size={30} className="text-black"/>
+            </div>
+            <AiFillStepForward
+            onClick={() => {}}
+            size={30} 
+            className="
+              text-neutral-400 
+              cursor-pointer 
+              hover:text-white 
+              transition
+            " 
+            />
+            <AiFillSmile
+            onClick={() => {}}
+            size={30} 
+            className="
+              text-neutral-400 
+              cursor-pointer 
+              hover:text-white 
+              transition
+            " 
+            />
+        </div>
+        <div className="hidden md:flex w-full justify-end pr-2">
+          <div className="flex items-center gap-x-2 w-[120px]">
+            <VolumeIcon 
+                onClick={() => {}} 
+                className="cursor-pointer" 
+                size={34}
+            />
+            <Slider />
+          </div>
         </div>
     </div>
   )

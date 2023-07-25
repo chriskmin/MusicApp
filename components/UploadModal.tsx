@@ -43,18 +43,20 @@ const UploadModal = () => {
     try{
       setIsLoading(true);
 
-      const imageFile = values.image?.[0]
-      const songFile = values.song?.[0]
+      const imageFile = values.image?.[0];
+      const songFile = values.song?.[0];
+
       if(!imageFile||!songFile||!user){
 
         toast.error("Missing Fields")
-        return
+        return;
       }
 
-      const uniqueID = uniqid() 
+      const uniqueID = uniqid() ;
+
       const {
         data: songData,
-        error: songError,
+        error: songError
       } = await supabaseClient
         .storage
         .from('songs')
@@ -62,24 +64,26 @@ const UploadModal = () => {
           cacheControl: '3600',
           upsert: false
       });
+
       if (songError){
         setIsLoading(false);
         return toast.error("Song Upload Failed")
       }
 
-      const {
-        data: imageData,
-        error: imageError,
+      const { 
+        data: imageData, 
+        error: imageError
       } = await supabaseClient
         .storage
         .from('images')
-        .upload(`images-${values.title}-${uniqueID}`, imageFile,{
+        .upload(`image-${values.title}-${uniqueID}`, imageFile, {
           cacheControl: '3600',
           upsert: false
-      });
-      if (imageError){
+        });
+
+      if (imageError) {
         setIsLoading(false);
-        return toast.error("Image Upload Failed")
+        return toast.error('Failed image upload');
       }
 
 
@@ -96,6 +100,7 @@ const UploadModal = () => {
         if (supabaseError) {
           return toast.error(supabaseError.message);
         }
+        
         router.refresh();
         setIsLoading(false);
         toast.success('Song created!');
