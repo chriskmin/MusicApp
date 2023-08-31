@@ -4,11 +4,11 @@ import { Song } from "@/types";
 import MediaItem from "./MediaItem";
 import LikeButton from "./LikeButton";
 import {BsPauseFill, BsPlayFill} from "react-icons/bs"
-import { AiFillBackward, AiFillSmile, AiFillStepForward } from "react-icons/ai";
+import { AiFillBackward, AiFillSmile, AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
 import {HiSpeakerXMark, HiSpeakerWave} from "react-icons/hi2"
 import Slider from "./Slider";
 import usePlayer from "@/hooks/usePlayer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useSound from "use-sound";
 
 
@@ -73,7 +73,30 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
       format: ['mp3']
     }
   );
+  
+  useEffect(() => {
+    sound?.play();
+    
+    return () => {
+      sound?.unload();
+    }
+  }, [sound]);
 
+  const handlePlay = () => {
+    if (!isPlaying) {
+      play();
+    } else {
+      pause();
+    }
+  }
+
+  const toggleMute = () => {
+    if (volume === 0) {
+      setVolume(1);
+    } else {
+      setVolume(0);
+    }
+  }
   return(
 
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
@@ -118,7 +141,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             max-w-[722px] 
             gap-x-6
         ">
-            <AiFillBackward 
+            <AiFillStepBackward 
                 onClick={() => {}}
                 size={30} 
                 className="
