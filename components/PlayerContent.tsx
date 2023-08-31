@@ -97,25 +97,27 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
       setVolume(0);
     }
   }
-  return(
-
+  return ( 
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
         <div className="flex w-full justify-start">
-            <div className="flex items-center gap-x-4">
-                <MediaItem data={song} />
-                <LikeButton songId={song.id}/>
-            </div>
+          <div className="flex items-center gap-x-4">
+            <MediaItem data={song} />
+            <LikeButton songId={song.id} />
+          </div>
         </div>
-        <div className="
+
+        <div 
+          className="
             flex 
             md:hidden 
             col-auto 
             w-full 
             justify-end 
             items-center
-        ">
-            <div 
-            onClick={() => {}}
+          "
+        >
+          <div 
+            onClick={handlePlay} 
             className="
               h-10
               w-10
@@ -126,12 +128,14 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
               bg-white 
               p-1 
               cursor-pointer
-            ">
-                <Icon size={30} className="text-black"/>
-
-            </div>
+            "
+          >
+            <Icon size={30} className="text-black" />
+          </div>
         </div>
-        <div className="
+
+        <div 
+          className="
             hidden
             h-full
             md:flex 
@@ -140,32 +144,35 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
             w-full 
             max-w-[722px] 
             gap-x-6
-        ">
-            <AiFillStepBackward 
-                onClick={() => {}}
-                size={30} 
-                className="
-                text-neutral-400 
-                cursor-pointer 
-                hover:text-white 
-                transition"
-            /> 
-            <div onClick={onPlayPrevious}
-                className="
-                flex 
-                items-center 
-                justify-center
-                h-10
-                w-10 
-                rounded-full 
-                bg-white 
-                p-1 
-                cursor-pointer
-                "
-            >
-                <Icon size={30} className="text-black"/>
-            </div>
-            <AiFillStepForward
+          "
+        >
+          <AiFillStepBackward
+            onClick={onPlayPrevious}
+            size={30} 
+            className="
+              text-neutral-400 
+              cursor-pointer 
+              hover:text-white 
+              transition
+            "
+          />
+          <div 
+            onClick={handlePlay} 
+            className="
+              flex 
+              items-center 
+              justify-center
+              h-10
+              w-10 
+              rounded-full 
+              bg-white 
+              p-1 
+              cursor-pointer
+            "
+          >
+            <Icon size={30} className="text-black" />
+          </div>
+          <AiFillStepForward
             onClick={onPlayNext}
             size={30} 
             className="
@@ -174,30 +181,25 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
               hover:text-white 
               transition
             " 
-            />
-            <AiFillSmile
-            onClick={() => {}}
-            size={30} 
-            className="
-              text-neutral-400 
-              cursor-pointer 
-              hover:text-white 
-              transition
-            " 
-            />
+          />
         </div>
+
         <div className="hidden md:flex w-full justify-end pr-2">
           <div className="flex items-center gap-x-2 w-[120px]">
             <VolumeIcon 
-                onClick={() => {}} 
-                className="cursor-pointer" 
-                size={34}
+              onClick={toggleMute} 
+              className="cursor-pointer" 
+              size={34} 
             />
-            <Slider />
+            <Slider 
+              value={volume} 
+              onChange={(value) => setVolume(value)}
+            />
           </div>
         </div>
-    </div>
-  )
-}
 
-export default PlayerContent
+      </div>
+   );
+}
+ 
+export default PlayerContent;
