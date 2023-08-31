@@ -182,7 +182,18 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
               transition
             " 
           />
+          <AiFillSmile
+            onClick={() => {}}
+            size={30} 
+            className="
+              text-neutral-400 
+              cursor-pointer 
+              hover:text-white 
+              transition
+            " 
+            />
         </div>
+        
 
         <div className="hidden md:flex w-full justify-end pr-2">
           <div className="flex items-center gap-x-2 w-[120px]">
